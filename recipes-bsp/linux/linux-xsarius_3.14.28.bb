@@ -25,6 +25,7 @@ SRC_URI = "http://en3homeftp.net/pub/src/linux-${KV}.tar.xz \
 	file://kernel-gcc9.patch \
 	file://0003-mips-kernel-ilog2-gcc7.patch \
 	file://0003-3.x-uaccess-dont-mark-register-as-const.patch \
+	file://make-yyloc-declaration-extern.patch \
         file://defconfig \
         "
 
