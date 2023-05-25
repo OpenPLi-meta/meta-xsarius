@@ -34,7 +34,7 @@ do_install_append() {
     install -d ${D}/etc/pki/tls
     
     # Python Files
-    cp -aRf ${S}/HbbTV/* ${D}/usr/lib/${DESTDIR}
+    cp -arf --no-preserve=ownership ${S}/HbbTV/* ${D}/usr/lib/${DESTDIR}
     python3 -O -m compileall ${D}/usr/lib/${DESTDIR}
     rm -rf ${D}/usr/lib/${DESTDIR}/*.py
     
