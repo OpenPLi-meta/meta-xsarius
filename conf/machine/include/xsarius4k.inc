@@ -1,7 +1,6 @@
 # We know about rtc
 MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc"
 
-MTD_KERNEL = "mmcblk0p1"
 TARGET_ARCH = "arm"
 DEFAULTTUNE = "armv7ahf-neon"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
