@@ -1,21 +1,19 @@
-DESCRIPTION = "Hardware drivers for ${MACHINE}"
+SUMMARY = "Hardware drivers for ${MACHINE}"
 SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-KV = "3.14.28"
-KV_EXTRA = ""
+SRCDATE = "20180808"
+KV = "4.2.1"
 PV = "${KV}+${SRCDATE}"
+PR = "r2"
 
-SRCDATE = "20190502"
+SRC_URI[md5sum] = "e2244c18913cf501fb7aa2d4b0680378"
+SRC_URI[sha256sum] = "d1d029be92c33a69d6a8d17d3788a9ae037dfc3697d305e0f164b5d14ff848d2"
 
-# @description : model_size is 200mm and 300mm.
-# ex) bcmlinuxdvb_7252S-200mm-3.14.28-20161130.tar.gz.
-# only 2 case. ( 200mm and 300mm )
-
-SRC_URI = "http://en3homeftp.net/release/images/oedrivers/bcmlinuxdvb_${CHIP}-${MODEL_SIZE}-${KV}-${SRCDATE}.tar.gz"
+SRC_URI = "http://en3homeftp.net/release/images/oedrivers/bcmlinuxdvb_7362-${KV}-${SRCDATE}.tar.gz"
 
 S = "${WORKDIR}"
 
@@ -38,5 +36,3 @@ do_install() {
 		    echo $i _hwtype=\$hwtypenum >> ${D}/${sysconfdir}/modules-load.d/_${MACHINE}.conf
 		done
 }
-SRC_URI[md5sum] = "f48437c1426a9488e7045e3638d4a904"
-SRC_URI[sha256sum] = "cde80d2f286b2c228755d7f0a67fb550ae2ce0eb7aba7be8b6f28d4be2446c0d"
