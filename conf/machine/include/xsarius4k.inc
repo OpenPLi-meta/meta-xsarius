@@ -4,9 +4,10 @@ MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc"
 TARGET_ARCH = "arm"
 DEFAULTTUNE = "armv7ahf-neon"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
+	xsarius-dvb-modules-${MACHINE} \
 	${@bb.utils.contains("GST_VERSION", "1.0", "gstreamer1.0-libav", "gst-ffmpeg", d)} \
-        xsarius-initrd-${MACHINE} \
-        xsarius-shutdown \
+	xsarius-initrd-${MACHINE} \
+	xsarius-shutdown \
 "
 
 KERNEL_MODULE_AUTOLOAD += "xfs"
