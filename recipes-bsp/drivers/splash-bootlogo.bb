@@ -17,7 +17,7 @@ SRC_URI = " \
 
 inherit deploy
 
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 
 do_deploy() {
 	install -m 0644 ${WORKDIR}/*.bmp ${DEPLOYDIR}/

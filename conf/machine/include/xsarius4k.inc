@@ -34,7 +34,7 @@ PREFERRED_VERSION_directfb = "1.7.7"
 
 IMAGEDIR ?= "${MACHINE}"
 
-IMAGE_CMD_tar_prepend = " \
+IMAGE_CMD:tar:prepend = " \
 	mkdir -p ${DEPLOY_DIR_IMAGE}/update/${UPDATE_DIR}/; \
 	cp -f ${DEPLOY_DIR_IMAGE}/${MACHINE}_splash.bmp ${DEPLOY_DIR_IMAGE}/update/${UPDATE_DIR}/splash.bmp; \
         cp ${IMAGE_ROOTFS}/tmp/zImage ${DEPLOY_DIR_IMAGE}/update/${MACHINE}/oe_kernel.bin; \

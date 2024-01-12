@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 SRCREV = "${AUTOREV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/pli3/xsarius-opera-browser.git"
+SRC_URI = "git://github.com/pli3/xsarius-opera-browser.git;branch=master;protocol=https"
 
 EXTRA_OECONF = " \
     BUILD_SYS=${BUILD_SYS} \
@@ -13,7 +13,7 @@ EXTRA_OECONF = " \
     STAGING_LIBDIR=${STAGING_LIBDIR} \
 "
 
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 
 S = "${WORKDIR}/git"
 DEPLOY_DIR = "${TMPDIR}/deploy"
@@ -24,7 +24,7 @@ XSARIUS_OPERA_BROWSER = " \
 
 do_install() {
 }
-python populate_packages_prepend () {
+python populate_packages:prepend () {
     p = ""
     plugins = d.getVar('XSARIUS_OPERA_BROWSER', True)
 

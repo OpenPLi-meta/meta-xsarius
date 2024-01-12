@@ -6,7 +6,7 @@ PR = "r1"
 
 inherit gitpkgv deploy
 
-SRC_URI="git://github.com/MOA-2011/vuplus-opera-dumpait.git"
+SRC_URI="git://github.com/MOA-2011/vuplus-opera-dumpait.git;branch=master;protocol=https"
 
 EXTRA_OECONF = " \
 			 BUILD_SYS=${BUILD_SYS} \
@@ -15,7 +15,7 @@ EXTRA_OECONF = " \
 			 STAGING_LIBDIR=${STAGING_LIBDIR} \
 "
 
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 
 S = "${WORKDIR}/git"
 
@@ -26,7 +26,7 @@ OPERA_DUMPAIT = "opera-dumpait_git11+c0616d5-r10_mips32el.ipk"
 do_install() {
 }
 
-python populate_packages_prepend () {
+python populate_packages:prepend () {
     p = ""
     plugins = d.getVar('OPERA_BROWSER', True)
 

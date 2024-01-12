@@ -41,20 +41,20 @@ EXTRA_IMAGECMD_COMPAT = " --eraseblock=0x20000 -n -l --pagesize=0x800 "
 
 UBI_IMAGEDIR = "${WORKDIR}/deploy-${PN}-image-complete"
 
-IMAGE_CMD_ubifs_prepend = " \
+IMAGE_CMD:ubifs:prepend = " \
 	mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/; \
 	cp -f ${IMAGE_ROOTFS}/tmp/vmlinux.gz ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.vmlinux.gz; \
 	rm -Rf ${IMAGE_ROOTFS}/boot/*; \
 	rm -Rf ${IMAGE_ROOTFS}/tmp/*; \
 	"
 
-IMAGE_CMD_ubi_prepend = " \
+IMAGE_CMD:ubi:prepend = " \
 	cp -f ${DEPLOY_DIR_IMAGE}/${MACHINE}_splash.bmp ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/splash.bmp; \
 	cp -f ${DEPLOY_DIR_IMAGE}/${MACHINE}_splash1.bmp ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/splash1.bmp; \
 	cp -f ${DEPLOY_DIR_IMAGE}/${MACHINE}_splash2.bmp ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/splash2.bmp; \
 	"
 
-IMAGE_CMD_ubi_append = " \
+IMAGE_CMD:ubi:append = " \
 	cp -f ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.vmlinux.gz  ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/oe_kernel.bin; \
 	cp -f ${UBI_IMAGEDIR}/${IMAGE_NAME}.rootfs.ubi ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/oe_rootfs.bin; \
 	cd ${DEPLOY_DIR_IMAGE}; \
@@ -64,6 +64,6 @@ IMAGE_CMD_ubi_append = " \
 
 MACHINE_FEATURES += "dvb-c alsa usbhost wlan kernelwifi 3dtv switchoff osdposition hdmicec dvbusb"
 
-require conf/machine/include/tune-mips32.inc
+require conf/machine/include/mips/tune-mips32.inc
 require conf/machine/include/xsarius-wifi.inc
 require conf/machine/include/xsarius-dvb-usb.inc

@@ -4,7 +4,7 @@ PRIORITY = "required"
 LICENSE = "CLOSED"
 COMPATIBLE_MACHINE = "^(galaxy|revo)4k$"
 
-RDEPENDS_${PN} = "dumpait-legacy webkit-classic webkit-classic-browser"
+RDEPENDS:${PN} = "dumpait-legacy webkit-classic webkit-classic-browser"
 
 inherit gitpkgv
 
@@ -14,7 +14,7 @@ PV = "${PKGVERSION}-${SRCPV}"
 PKGV = "${PKGVERSION}-${GITPKGV}"
 PR = "r0"
 
-INSANE_SKIP_${PN} += "already-stripped"
+INSANE_SKIP:${PN} += "already-stripped"
 
 SRC_URI = "git://github.com/oe-alliance/enigma2-plugin-extensions-hbbtv-webkit.git;protocol=https;branch=dev"
 
@@ -25,7 +25,7 @@ do_package_qa() {
 
 DESTDIR = "enigma2/python/Plugins/Extensions/HbbTV"
 
-do_install_append() {
+do_install:append() {
     install -d ${D}/usr/bin
     install -d ${D}/usr/lib/${DESTDIR}
     install -d ${D}/usr/lib/mozilla/plugins
@@ -47,4 +47,4 @@ do_install_append() {
     install -m 0755 ${S}/libhbbtvplugin.so ${D}/usr/lib/mozilla/plugins/
 }
 
-FILES_${PN} = "/"
+FILES:${PN} = "/"

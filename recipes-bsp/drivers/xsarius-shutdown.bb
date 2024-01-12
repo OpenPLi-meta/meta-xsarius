@@ -21,11 +21,11 @@ do_install() {
     install -m 0755 ${WORKDIR}/turnoff_power ${D}/usr/bin
 }
 
-pkg_preinst_${PN}_prepend() {
+pkg_preinst:${PN}:prepend() {
 	chmod 000 "$D/etc/init.d/xsarius-shutdown" || true
 }
 
-pkg_postinst_${PN}_append() {
+pkg_postinst:${PN}:append() {
 	chmod 755 "$D/etc/init.d/xsarius-shutdown"
 }
 

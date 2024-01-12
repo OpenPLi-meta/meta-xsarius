@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 SRCREV = "${AUTOREV}"
 PR = "r1"
 
-SRC_URI="git://github.com/MOA-2011/vuplus-opera-browser-util.git"
+SRC_URI="git://github.com/MOA-2011/vuplus-opera-browser-util.git;branch=master;protocol=https"
 
 EXTRA_OECONF = " \
     BUILD_SYS=${BUILD_SYS} \
@@ -13,7 +13,7 @@ EXTRA_OECONF = " \
     STAGING_LIBDIR=${STAGING_LIBDIR} \
 "
 
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 
 S = "${WORKDIR}/git"
 
@@ -24,7 +24,7 @@ OPERA_BROWSER = "opera-browser-util_1.0-r42_20151222_1_mips32el.ipk"
 do_install() {
 }
 
-python populate_packages_prepend () {
+python populate_packages:prepend () {
     p = ""
     plugins = d.getVar('OPERA_BROWSER', True)
 

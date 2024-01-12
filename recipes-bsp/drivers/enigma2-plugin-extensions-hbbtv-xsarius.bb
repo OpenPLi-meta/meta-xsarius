@@ -4,7 +4,7 @@ PACKAGE_ARCH := "${MACHINE_ARCH}"
 SRCREV = "${AUTOREV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/pli3/enigma2-plugin-extensions-hbbtv-xsarius.git"
+SRC_URI = "git://github.com/pli3/enigma2-plugin-extensions-hbbtv-xsarius.git;branch=master;protocol=https"
 
 EXTRA_OECONF = " \
     BUILD_SYS=${BUILD_SYS} \
@@ -13,7 +13,7 @@ EXTRA_OECONF = " \
     STAGING_LIBDIR=${STAGING_LIBDIR} \
 "
 
-ALLOW_EMPTY_${PN} = "1"
+ALLOW_EMPTY:${PN} = "1"
 
 S = "${WORKDIR}/git"
 DEPLOY_DIR = "${TMPDIR}/deploy"
@@ -24,7 +24,7 @@ ENIGMA2_PLUGIN_EXTENSIONS_HBBTV = " \
 
 do_install() {
 }
-python populate_packages_prepend () {
+python populate_packages:prepend () {
     p = ""
     plugins = d.getVar('ENIGMA2_PLUGIN_EXTENSIONS_HBBTV', True)
 
