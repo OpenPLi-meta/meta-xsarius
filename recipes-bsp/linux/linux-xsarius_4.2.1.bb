@@ -1,5 +1,5 @@
 SUMMARY = "Linux kernel for ${MACHINE}"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 SECTION = "kernel"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -12,6 +12,8 @@ SRC_URI[md5sum] = "86ed84a17ce276a4db610e6aad753ae4"
 SRC_URI[sha256sum] = "3e33599a4eeb6e2eae7ff4ab7ae1f3e7b80f657d7e1437a1d6290b4597ad9853"
 
 LIC_FILES_CHKSUM = "file://${WORKDIR}/linux-${KV}/COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
+
+RPROVIDES:kernel-image = "kernel-${KERNEL_IMAGETYPE}"
 
 SRC_URI += "http://en3homeftp.net/pub/src/xsarius-linux-${KV}-${SRCDATE}.tar.gz \
     file://defconfig \
@@ -48,6 +50,9 @@ pkg_postinst:kernel-image () {
         fi
     fi
     true
+}
+
+do_rm_work() {
 }
 
 # extra tasks

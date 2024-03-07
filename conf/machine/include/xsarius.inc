@@ -13,6 +13,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS = " \
 KERNEL_MODULE_AUTOLOAD += "xfs"
 
 MACHINE_EXTRA_RRECOMMENDS = " \
+	gstreamer1.0-plugin-dvbmediasink \
 	gstreamer1.0-libav \
 	splash-bootlogo \
 	xsarius-opera-dumpait \
@@ -42,24 +43,30 @@ EXTRA_IMAGECMD_COMPAT = " --eraseblock=0x20000 -n -l --pagesize=0x800 "
 UBI_IMAGEDIR = "${WORKDIR}/deploy-${PN}-image-complete"
 
 IMAGE_CMD:ubifs:prepend = " \
-	mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/; \
-	cp -f ${IMAGE_ROOTFS}/tmp/vmlinux.gz ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.vmlinux.gz; \
+	mkdir -p ${IMAGE_ROOTFS}/usr/lib; \
+	if [ "${PACKAGE_LIST}" = "1" ]; then \
+	cp ${IMAGE_MANIFEST} ${IMAGE_ROOTFS}/usr/lib/package.lst; \
+	fi; \
 	rm -Rf ${IMAGE_ROOTFS}/boot/*; \
 	rm -Rf ${IMAGE_ROOTFS}/tmp/*; \
 	"
 
-IMAGE_CMD:ubi:prepend = " \
+IMAGE_CMD:ubi:append = " \
+	mkdir -p ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}; \
 	cp -f ${DEPLOY_DIR_IMAGE}/${MACHINE}_splash.bmp ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/splash.bmp; \
 	cp -f ${DEPLOY_DIR_IMAGE}/${MACHINE}_splash1.bmp ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/splash1.bmp; \
 	cp -f ${DEPLOY_DIR_IMAGE}/${MACHINE}_splash2.bmp ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/splash2.bmp; \
-	"
-
-IMAGE_CMD:ubi:append = " \
-	cp -f ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.vmlinux.gz  ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/oe_kernel.bin; \
-	cp -f ${UBI_IMAGEDIR}/${IMAGE_NAME}.rootfs.ubi ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/oe_rootfs.bin; \
+	mv ${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.ubi ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/${ROOTFS_FILE}; \
+	gzip -f -9c ${DEPLOY_DIR_IMAGE}/vmlinux-${MACHINE}.bin > ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/${KERNEL_FILE}; \
+	echo ${IMAGE_VER_STRING} > ${DEPLOY_DIR_IMAGE}/${IMAGEDIR}/imageversion; \
 	cd ${DEPLOY_DIR_IMAGE}; \
 	zip ${IMAGE_NAME}_usb.zip ${IMAGEDIR}/*; \
-	rm -rf update; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubi; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.ubifs; \
+	rm -f ${DEPLOY_DIR_IMAGE}/*.manifest; \
+	rm -f ${DEPLOY_DIR_IMAGE}/.ubifs; \
+	rm -f ${DEPLOY_DIR_IMAGE}/.manifest; \
+	rm -Rf update; \
 "
 
 MACHINE_FEATURES += "dvb-c alsa usbhost wlan kernelwifi 3dtv switchoff osdposition hdmicec dvbusb"
