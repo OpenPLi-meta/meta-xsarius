@@ -15,19 +15,15 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/stblinux-${KV}:"
 
 SRC_URI = "http://en3homeftp.net/pub/src/linux-${KV}.tar.xz \
 	file://0001.fix_hwtype.patch \
-        file://0002.recording_issue.patch \
+	file://0002.recording_issue.patch \
 	file://0001.remove_vtuner_index_check.patch \
-        file://bcm_genet_disable_warn.patch \
+	file://bcm_genet_disable_warn.patch \
 	file://rtl8712_fix_build_error.patch \
-        file://kernel-gcc6.patch \
-        file://kernel-gcc7.patch \
-	file://kernel-gcc8.patch \
-	file://kernel-gcc9.patch \
 	file://0003-mips-kernel-ilog2-gcc7.patch \
 	file://0003-3.x-uaccess-dont-mark-register-as-const.patch \
 	file://make-yyloc-declaration-extern.patch \
-        file://defconfig \
-        "
+	file://defconfig \
+	"
 
 inherit kernel machine_kernel_pr
 
