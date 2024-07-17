@@ -23,6 +23,7 @@ SRC_URI = "http://en3homeftp.net/pub/src/linux-${KV}.tar.xz \
 	file://0003-3.x-uaccess-dont-mark-register-as-const.patch \
 	file://make-yyloc-declaration-extern.patch \
 	file://fix-build-binutils241.patch \
+	file://fix-linker-issue-undefined-reference.patch \
 	file://defconfig \
 	"
 
