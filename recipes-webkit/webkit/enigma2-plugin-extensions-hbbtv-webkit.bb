@@ -35,7 +35,7 @@ do_install_append() {
     
     # Python Files
     cp -arf --no-preserve=ownership ${S}/HbbTV/* ${D}/usr/lib/${DESTDIR}
-    python3 -O -m compileall ${D}/usr/lib/${DESTDIR}
+    python3 -m compileall -b ${D}/usr/lib/${DESTDIR}
     rm -rf ${D}/usr/lib/${DESTDIR}/*.py
     
     # browser
