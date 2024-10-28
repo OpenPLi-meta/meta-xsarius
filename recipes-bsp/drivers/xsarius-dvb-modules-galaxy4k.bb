@@ -15,7 +15,7 @@ SRCDATE = "20190502"
 # ex) bcmlinuxdvb_7252S-200mm-3.14.28-20161130.tar.gz.
 # only 2 case. ( 200mm and 300mm )
 
-SRC_URI = "http://en3homeftp.net/release/images/oedrivers/bcmlinuxdvb_7252S-300mm-${KV}-${SRCDATE}.tar.gz"
+SRC_URI = "http://downloads.openpli.org/archive/xsarius/bcmlinuxdvb_7252S-300mm-${KV}-${SRCDATE}.tar.gz"
 
 S = "${WORKDIR}"
 

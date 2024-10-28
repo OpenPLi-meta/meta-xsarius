@@ -15,7 +15,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/linux-${KV}/COPYING;md5=d7810fab7487fb0aad
 
 RPROVIDES:kernel-image = "kernel-${KERNEL_IMAGETYPE}"
 
-SRC_URI += "http://en3homeftp.net/pub/src/xsarius-linux-${KV}-${SRCDATE}.tar.gz \
+SRC_URI += "http://downloads.openpli.org/archive/xsarius/xsarius-linux-${KV}-${SRCDATE}.tar.gz \
     file://defconfig \
     file://dvbskyt330_si2168_demod.patch \
     file://0002-log2-give-up-on-gcc-constant-optimizations.patch \
