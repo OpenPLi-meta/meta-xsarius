@@ -13,7 +13,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/linux/COPYING;md5=d7810fab7487fb0aad327b76
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/stblinux-${KV}:"
 
-SRC_URI = "http://en3homeftp.net/pub/src/linux-${KV}.tar.xz \
+SRC_URI = "http://downloads.openpli.org/archive/xsarius/linux-${KV}.tar.xz \
 	file://0001.fix_hwtype.patch \
         file://0002.recording_issue.patch \
 	file://0001.remove_vtuner_index_check.patch \

@@ -13,7 +13,7 @@ SRC_URI[sha256sum] = "3e33599a4eeb6e2eae7ff4ab7ae1f3e7b80f657d7e1437a1d6290b4597
 
 LIC_FILES_CHKSUM = "file://${WORKDIR}/linux-${KV}/COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
-SRC_URI += "http://en3homeftp.net/pub/src/xsarius-linux-${KV}-${SRCDATE}.tar.gz \
+SRC_URI += "http://downloads.openpli.org/archive/xsarius/xsarius-linux-${KV}-${SRCDATE}.tar.gz \
     file://defconfig \
     file://dvbskyt330_si2168_demod.patch \
     file://0002-log2-give-up-on-gcc-constant-optimizations.patch \
