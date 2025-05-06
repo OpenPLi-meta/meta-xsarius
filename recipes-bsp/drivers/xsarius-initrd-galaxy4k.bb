@@ -11,7 +11,7 @@ SRC_URI = "http://downloads.openpli.org/archive/xsarius/vmlinuz-initrd_${MACHINE
 FILES:${PN} = "/boot"
 
 INHIBIT_PACKAGE_STRIP = "1"
-PACKAGE_ARCH := "${MACHINE_ARCH}"
+PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 do_install() {
     install -d ${D}/boot
