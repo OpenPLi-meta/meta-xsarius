@@ -19,6 +19,8 @@ SRC_URI += "http://downloads.openpli.org/archive/xsarius/xsarius-linux-${KV}-${S
     file://defconfig \
     file://dvbskyt330_si2168_demod.patch \
     file://0002-log2-give-up-on-gcc-constant-optimizations.patch \
+    file://fix-never-be-null_outside-array-bounds-gcc-12.patch \
+    file://fix-build-with-binutils-2.41.patch \
     "
 
 S = "${WORKDIR}/linux-${KV}"
@@ -30,7 +32,7 @@ KERNEL_OUTPUT_DIR = "."
 KERNEL_IMAGETYPE = "vmlinux"
 KERNEL_IMAGEDEST = "tmp"
 
-KERNEL_EXTRA_ARGS = "EXTRA_CFLAGS+=-Wno-attribute-alias EXTRA_CFLAGS+=-Wno-address EXTRA_CFLAGS+=-Wno-array-bounds"
+KERNEL_EXTRA_ARGS = "EXTRA_CFLAGS=-Wno-attribute-alias"
 KERNEL_PACKAGE_NAME = "kernel"
 
 FILES:${KERNEL_PACKAGE_NAME}-image = "/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}.gz"
